@@ -1,0 +1,44 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        x:Class="PcapFlowExporter.MainWindow"
+        x:CompileBindings="False"
+        mc:Ignorable="d"
+        Width="600" Height="250"
+        Title="PCAP ? Flow CSV Exporter">
+
+    <StackPanel Margin="16" Spacing="12">
+        <TextBlock Text="PCAP ? Flow CSV Exporter"
+                   FontSize="18"
+                   FontWeight="Bold" />
+
+        <StackPanel Orientation="Horizontal" Spacing="8">
+            <TextBlock Text="Selected PCAP:" VerticalAlignment="Center" />
+            <TextBlock Text="{Binding SelectedPcapPath}" 
+                       VerticalAlignment="Center"
+                       TextWrapping="Wrap"
+                       Width="350" />
+            <Button Content="Browse..."
+                    Command="{Binding BrowsePcapCommand}" />
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Spacing="8">
+            <TextBlock Text="Output CSV:" VerticalAlignment="Center" />
+            <TextBlock Text="{Binding OutputCsvPath}"
+                       VerticalAlignment="Center"
+                       TextWrapping="Wrap"
+                       Width="350" />
+        </StackPanel>
+
+        <Button Content="Convert PCAP to CSV"
+                HorizontalAlignment="Left"
+                Width="200"
+                IsEnabled="{Binding CanConvert}"
+                Command="{Binding ConvertCommand}" />
+
+        <TextBlock Text="{Binding StatusMessage}"
+                   TextWrapping="Wrap"
+                   Foreground="LightGray" />
+    </StackPanel>
+</Window>
